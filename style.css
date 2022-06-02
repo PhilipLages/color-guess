@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 h1 {
   text-align: center;
+  font-size: 50px;
+}
+
+.all-container {
+  font-family: 'Lobster', cursive !important;
+  color: darkblue;
+  margin: auto;
+  background-image: url(./background.webp);
+  background-size: cover;  
 }
 
 #container {
@@ -25,4 +36,14 @@ h1 {
 #buttons {
   text-align: center;
   margin-top: 20px;
+}
+
+#reset-game {
+  width: 150px;
+  height: 50px;
+  font-family: 'Lobster', cursive !important;
+  font-size: 20px;
+  background-color: yellow;
+  border-radius: 50%;
+  border: 4px solid black;
 }

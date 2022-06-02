@@ -34,7 +34,7 @@ writeColorToGuess();
 
 let acumulador = 0;
 let score = document.getElementById('score');
-score.innerText = 0;
+score.innerText  = acumulador;
 
 const answer = document.getElementById('answer');
 answer.innerText = 'Escolha uma cor';
@@ -50,8 +50,7 @@ function guessTheColor(e) {
   }
 }
 
-function addColorsEvent() {
-  console.log('ativei addColorsEvent');
+function addColorsEvent() {  
   for (const color of colors) {
     color.addEventListener('click', guessTheColor);
   }
