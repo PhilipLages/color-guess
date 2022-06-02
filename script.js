@@ -26,7 +26,7 @@ const guessText = document.getElementById('rgb-color');
 function writeColorToGuess () {
   for (let color of colors) {
     guessText.innerText = color.style.backgroundColor;
-    break;
+    // break;
   }  
   }
 writeColorToGuess();
@@ -51,3 +51,13 @@ function addBallsEvent() {
   }
 }
 addBallsEvent();
+
+function createResetBtn () {
+  container.appendChild(createNewTag('button', 'id', 'reset-game'));
+  const resetBtn = document.getElementById('reset-game');
+  resetBtn.innerText = 'iniciar/reiniciar';
+  resetBtn.addEventListener('click', function() {
+    window.location.reload();
+  })
+}
+createResetBtn();
