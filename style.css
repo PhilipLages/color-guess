@@ -2,7 +2,11 @@ h1 {
   text-align: center;
 }
 
-.container {
+#container {
+  text-align: center;
+}
+
+#circles-container {
   text-align: center;
 }
 
@@ -12,4 +16,13 @@ h1 {
   width: 70px;
   border-radius: 100%;
   display: inline-block;
+}
+
+.score {
+  display: inline-block;
+}
+
+#buttons {
+  text-align: center;
+  margin-top: 20px;
 }

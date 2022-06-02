@@ -1,6 +1,6 @@
-function createNewTag(tag, element, value) {         
-  const createTag = document.createElement(tag);        
-  createTag.setAttribute(element, value);    
+function createNewTag(tag, element, value) {
+  const createTag = document.createElement(tag);
+  createTag.setAttribute(element, value);
   return createTag;
 }
 
@@ -11,53 +11,64 @@ function createRandomColors(number) {
   return 'rgb' + `(${red}, ${green}, ${blue})`;
 }
 
-const container = document.querySelector('.container');
+const container = document.getElementById('circles-container');
+
 function createCircles() {
   for (let circle = 0; circle < 6; circle += 1) {
-    const circles = container.appendChild(createNewTag('div', 'class', 'ball'))
-    circles.style.backgroundColor = createRandomColors(255);    
-  } 
+    const circles = createNewTag('div', 'class', 'ball');
+    circles.style.backgroundColor = createRandomColors(255);
+    container.appendChild(circles);
+  }
 }
 createCircles();
 
-const colors = document.querySelectorAll('.ball');
-
+const colors = document.getElementsByClassName('ball');
 const guessText = document.getElementById('rgb-color');
-function writeColorToGuess () {
-  for (let color of colors) {
-    guessText.innerText = color.style.backgroundColor;
-    // break;
-  }  
-  }
+
+function writeColorToGuess() {
+  const whichColor = Math.floor(Math.random() * 6);
+  const randomColor = colors[whichColor];
+  guessText.innerText = randomColor.style.backgroundColor;
+}
 writeColorToGuess();
 
+let acumulador = 0;
+let score = document.getElementById('score');
+score.innerText = 0;
+
 const answer = document.getElementById('answer');
-window.onload = function() {
-  answer.appendChild(createNewTag('h2', 'id', 'answer'));
-  answer.innerText = "Escolha uma cor";
-}
+answer.innerText = 'Escolha uma cor';
 
 function guessTheColor(e) {  
   if (e.target.style.backgroundColor === guessText.innerText) {
     answer.innerText = 'Acertou!';
+    acumulador += 3;
+    score.innerText = acumulador;
+    localStorage.setItem('Score', score.innerText);
   } else {
-    answer.innerText = "Errou! Tente novamente!";
-  }  
-}
-
-function addBallsEvent() {
-  for (let ball of colors) {
-    ball.addEventListener('click', guessTheColor);
+    answer.innerText = 'Errou! Tente novamente!';
   }
 }
-addBallsEvent();
 
-function createResetBtn () {
-  container.appendChild(createNewTag('button', 'id', 'reset-game'));
+function addColorsEvent() {
+  console.log('ativei addColorsEvent');
+  for (const color of colors) {
+    color.addEventListener('click', guessTheColor);
+  }
+}
+addColorsEvent();
+
+function restartGame() {
+  answer.innerText = 'Escolha uma cor';
+  localStorage.getItem('Score');  
+  container.innerHTML = ' ';
+  createCircles();
+  writeColorToGuess();
+  addColorsEvent();
+}
+
+function createResetBtn() {
   const resetBtn = document.getElementById('reset-game');
-  resetBtn.innerText = 'iniciar/reiniciar';
-  resetBtn.addEventListener('click', function() {
-    window.location.reload();
-  })
+  resetBtn.addEventListener('click', restartGame);
 }
 createResetBtn();

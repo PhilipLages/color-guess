@@ -9,15 +9,21 @@
 </head>
 <body>
   <header>
-    <h1 id="title">Adivinação de cor</h1>
+    <h1 id="title">Color Guess</h1>
   </header>
   <main>
-    <section class="container">
+    <section id="container">
       <h2 id="answer"></h2>
-      <div id="first-div">
-        <p id="rgb-color"></p>
-      </div>
-    </section>    
+      <h3 class="score">Pontuação:</h3>
+      <h3 class="score" id="score"></h3>
+      <div>
+        <h4 id="rgb-color"></h4>
+      </div>              
+    </section>
+    <section id="circles-container"></section>
+    <section id="buttons">
+      <button id="reset-game">Trocar cores</button>
+    </section>                
   </main>
   <script src="./script.js"></script>
 </body>
