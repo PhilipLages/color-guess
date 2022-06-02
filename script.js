@@ -14,8 +14,40 @@ function createRandomColors(number) {
 const container = document.querySelector('.container');
 function createCircles() {
   for (let circle = 0; circle < 6; circle += 1) {
-    const createCircles = container.appendChild(createNewTag('div', 'class', 'ball'))
-    createCircles.style.backgroundColor = createRandomColors(255);    
+    const circles = container.appendChild(createNewTag('div', 'class', 'ball'))
+    circles.style.backgroundColor = createRandomColors(255);    
   } 
 }
 createCircles();
+
+const colors = document.querySelectorAll('.ball');
+
+const guessText = document.getElementById('rgb-color');
+function writeColorToGuess () {
+  for (let color of colors) {
+    guessText.innerText = color.style.backgroundColor;
+    break;
+  }  
+  }
+writeColorToGuess();
+
+const answer = document.getElementById('answer');
+window.onload = function() {
+  answer.appendChild(createNewTag('h2', 'id', 'answer'));
+  answer.innerText = "Escolha uma cor";
+}
+
+function guessTheColor(e) {  
+  if (e.target.style.backgroundColor === guessText.innerText) {
+    answer.innerText = 'Acertou!';
+  } else {
+    answer.innerText = "Errou! Tente novamente!";
+  }  
+}
+
+function addBallsEvent() {
+  for (let ball of colors) {
+    ball.addEventListener('click', guessTheColor);
+  }
+}
+addBallsEvent();
