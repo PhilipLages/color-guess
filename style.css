@@ -6,7 +6,7 @@ h1 {
 }
 
 .all-container {
-  font-family: 'Lobster', cursive !important;
+  font-family: 'Lobster', cursive;
   color: darkblue;
   margin: auto;
   background-image: url(./background.webp);
